@@ -7,5 +7,7 @@ defmodule DemoJwtWeb.Router do
 
   scope "/api", DemoJwtWeb do
     pipe_through :api
+
+    resources "/users", UserController, only: [:create]
   end
 end
