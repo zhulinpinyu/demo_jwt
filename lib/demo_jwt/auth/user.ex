@@ -8,6 +8,7 @@ defmodule DemoJwt.Auth.User do
     field :email, :string
     field :password_hash, :string
     field :username, :string
+    field :password, :string, virtual: true
 
     timestamps()
   end
