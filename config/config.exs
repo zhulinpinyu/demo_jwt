@@ -22,6 +22,10 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+config :demo_jwt, DemoJwt.Guardian,
+  issuer: "demo_jwt",
+  secret_key: "KAKOtE9GjyUFxykmZrHZ2UyHVugyu6rMaewlYMLFPUNrexrsX92D+P+fEB75MuE+"
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
