@@ -38,7 +38,11 @@ defmodule DemoJwt.Mixfile do
       {:phoenix_ecto, "~> 3.2"},
       {:postgrex, ">= 0.0.0"},
       {:gettext, "~> 0.11"},
-      {:cowboy, "~> 1.0"}
+      {:cowboy, "~> 1.0"},
+
+      #第三方库
+      {:comeonin, "~> 4.0"}, #密码哈希化
+      {:bcrypt_elixir, "~> 1.0"} #密码哈希化，配合comeonin
     ]
   end
 
