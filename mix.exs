@@ -42,7 +42,8 @@ defmodule DemoJwt.Mixfile do
 
       #第三方库
       {:comeonin, "~> 4.0"}, #密码哈希化
-      {:bcrypt_elixir, "~> 1.0"} #密码哈希化，配合comeonin
+      {:bcrypt_elixir, "~> 1.0"}, #密码哈希化，配合comeonin
+      {:guardian, "~> 1.0.0-beta.1"} #实现jwt
     ]
   end
 
