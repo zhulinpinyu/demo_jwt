@@ -1,5 +1,5 @@
 defmodule DemoJwt.Guardian do
-  use Guardian, otp: :demo_jwt
+  use Guardian, otp_app: :demo_jwt
 
   alias DemoJwt.Auth
 
