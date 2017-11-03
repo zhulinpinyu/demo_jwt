@@ -9,6 +9,9 @@ defmodule DemoJwtWeb.Router do
   scope "/api", DemoJwtWeb do
     pipe_through :api
 
+    post "/sessions", SessionController, :create
+    delete "/sessions", SessionController, :delete
+    post "/sessions/refresh", SessionController, :refresh
     resources "/users", UserController, only: [:create]
   end
 end

@@ -101,4 +101,8 @@ defmodule DemoJwt.Auth do
   def change_user(%User{} = user) do
     User.changeset(user, %{})
   end
+
+  def get_by(keywords) do
+    Repo.get_by(User, keywords)
+  end
 end

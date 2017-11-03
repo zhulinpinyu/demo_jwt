@@ -10,7 +10,7 @@ defmodule DemoJwtWeb.UserController do
       {:ok, user} ->
         new_conn = DemoJwt.Guardian.Plug.sign_in(conn, user)
         jwt = DemoJwt.Guardian.Plug.current_token(new_conn)
-        conn
+        new_conn
         |> put_status(:created)
         |> render(DemoJwtWeb.SessionView, "show.json", user: user, jwt: jwt)
 
