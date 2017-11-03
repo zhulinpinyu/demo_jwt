@@ -3,6 +3,7 @@ defmodule DemoJwtWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug DemoJwt.Guardian.AuthAccessPipeline
   end
 
   scope "/api", DemoJwtWeb do

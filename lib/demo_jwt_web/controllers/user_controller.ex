@@ -2,16 +2,22 @@ defmodule DemoJwtWeb.UserController do
   use DemoJwtWeb, :controller
 
   alias DemoJwt.Auth
-  alias DemoJwt.Auth.User
 
   action_fallback DemoJwtWeb.FallbackController
 
-  def create(conn, %{"user" => user_params}) do
-    with {:ok, %User{} = user} <- Auth.create_user(user_params) do
-      conn
-      |> put_status(:created)
-      |> put_resp_header("location", user_path(conn, :show, user))
-      |> render("show.json", user: user)
+  def create(conn, user_params) do
+    case Auth.create_user(user_params) do
+      {:ok, user} ->
+        new_conn = DemoJwt.Guardian.Plug.sign_in(conn, user)
+        jwt = DemoJwt.Guardian.Plug.current_token(new_conn)
+        conn
+        |> put_status(:created)
+        |> render(DemoJwtWeb.SessionView, "show.json", user: user, jwt: jwt)
+
+      {:error, changeset} ->
+        conn
+        |> put_status(:unprocessable_entity)
+        |> render(DemoJwtWeb.SessionView, "error.json", changeset: changeset)
     end
   end
 end
